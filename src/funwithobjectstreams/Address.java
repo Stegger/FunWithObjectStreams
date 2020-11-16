@@ -41,4 +41,21 @@ public class Address implements Serializable {
                 .append(this.country).toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Address address = (Address) o;
+
+        if (!street.equals(address.street)) return false;
+        return country.equals(address.country);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = street.hashCode();
+        result = 31 * result + country.hashCode();
+        return result;
+    }
 }
